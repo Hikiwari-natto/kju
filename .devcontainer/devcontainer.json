@@ -1,0 +1,42 @@
+// 開発環境の設定ファイルです。
+// これを使うと、誰でも同じ設定で開発を始めることができます。
+{
+  // 開発環境の名前です
+  "name": "Python 3",
+  // 開発に使うOSやソフトがセットになった「イメージ」というものです
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  
+  // プロジェクトのファイルが置かれる場所（コンテナ内）を指定します
+//  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  
+  "customizations": {
+    // 開発ツール（IDE）の設定です
+    "jetbrains": {
+      // PyCharmを使う設定にしています
+      "backend": "PyCharm",
+      "settings": {
+        // IDEの設定は「Show context actions」|「Add currently modified settings from IDE」から追加できます。
+        // サポートされている設定の完全なリストは、オートコンプリートを通じても利用可能です。
+        
+        // 使用するPythonの「通訳者（インタープリター）」の場所を指定します
+        "python.interpreterPath": "/usr/local/bin/python3"
+      },
+      "plugins": [
+        // プラグインIDのセット。
+        // プラグインIDは、https://plugins.jetbrains.com の対応するプラグインのページで見つけることができます。
+        "org.jetbrains.junie",
+        "com.intellij.ml.llm"
+      ]
+    }
+  },
+  // 便利な機能（Gitなど）を自動でインストールします
+  "features": {
+    "ghcr.io/devcontainers/features/git": {}
+  },
+  
+  // アプリを動かすときに使うポート（出口）の設定です（8000番を使います）
+  "forwardPorts": [8000],
+
+  // 開発環境が立ち上がった直後に、必要なライブラリを自動でインストールするコマンドです
+  "postCreateCommand": "pip3 install -r requirements.txt"
+}
